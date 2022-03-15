@@ -4,7 +4,7 @@ from typing import Tuple, List
 
 import pytest
 
-from randovania.game_description import default_database
+from randovania.game_description import default_database, derived_nodes
 from randovania.game_description.game_description import GameDescription
 from randovania.game_description.requirements import Requirement, ResourceRequirement
 from randovania.game_description.resources.pickup_index import PickupIndex
@@ -38,6 +38,7 @@ def run_bootstrap(preset: Preset):
     game = default_database.game_description_for(preset.game).make_mutable_copy()
     generator = game.game.generator
 
+    derived_nodes.create_derived_nodes(game)
     game.resource_database = generator.bootstrap.patch_resource_database(game.resource_database,
                                                                          preset.configuration)
     permalink = GeneratorParameters(
@@ -107,7 +108,7 @@ _ignore_pickups_for_game = {
         game, _ignore_events_for_game.get(game, set()), _ignore_pickups_for_game.get(game, set()),
         id=game.value,
     )
-    for game in RandovaniaGame
+    for game in [RandovaniaGame.METROID_DREAD]
 ])
 def test_database_collectable(preset_manager, game_enum, ignore_events, ignore_pickups):
     game, initial_state, permalink = run_bootstrap(
