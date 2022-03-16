@@ -27,10 +27,10 @@ def test_connections_from_dock_blast_shield(empty_patches):
 
     node_1 = DockNode("Node 1", False, None, "", {}, 0, dock_type,
                       node_2_identifier, weak_1, None, None)
-    node_1_lock = DockLockNode.create_from_dock(node_1, node_1_identifier, 2)
-    node_2 = DockNode("Node 2", False, None, "", {}, 1, dock_type,
+    node_1_lock = DockLockNode.create_from_dock(node_1, node_1_identifier, 1)
+    node_2 = DockNode("Node 2", False, None, "", {}, 2, dock_type,
                       node_1_identifier, weak_2, None, None)
-    node_2_lock = DockLockNode.create_from_dock(node_2, node_2_identifier, 2)
+    node_2_lock = DockLockNode.create_from_dock(node_2, node_2_identifier, 3)
 
     area_1 = Area("Area 1", None, True, [node_1, node_1_lock], {}, {})
     area_2 = Area("Area 2", None, True, [node_2, node_2_lock], {}, {})
@@ -51,8 +51,10 @@ def test_connections_from_dock_blast_shield(empty_patches):
 
     # Assert
     assert result_1 == [
-        (node_2, RequirementAnd([req_1, req_2])),
+        (node_2, RequirementAnd([req_1, ResourceRequirement.simple(node_2_identifier)])),
+        (node_1_lock, RequirementAnd([trivial, req_2])),
     ]
     assert result_2 == [
-        (node_1, req_2),
+        (node_1, ResourceRequirement.simple(node_2_identifier)),
+        (node_2_lock, req_2),
     ]

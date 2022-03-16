@@ -40,7 +40,7 @@ class WorldList(NodeProvider):
 
         for i, node in enumerate(self._nodes):
             if i != node.index:
-                raise ValueError(f"Incorrect index: {node.name} {node.index} expected {i}")
+                raise ValueError(f"Incorrect index: node `{node.name}` has index {node.index} expected {i}")
 
         self._pickup_index_to_node = {
             node.pickup_index: node
