@@ -20,7 +20,7 @@ class DreadPresetDescriber(GamePresetDescriber):
         extra_message_tree = {
             "Difficulty": [
                 {
-                    "Immediate Energy Fragments": configuration.immediate_energy_parts,
+                    "Immediate Energy Part": configuration.immediate_energy_parts,
                 }
             ],
             "Item Pool": [
@@ -41,7 +41,14 @@ class DreadPresetDescriber(GamePresetDescriber):
                     {
                         "Power Bomb needs Main": "Power Bomb Expansion",
                     }
-                )
+                ),
+                {
+                    "Open Hanubia Shortcut": configuration.hanubia_shortcut_no_grapple,
+                    "Easier Path to Itorash in Hanubia": configuration.hanubia_easier_path_to_itorash
+                },
+                {
+                    "X Starts Released": configuration.x_starts_released,
+                }
             ]
         }
         fill_template_strings_from_tree(template_strings, extra_message_tree)

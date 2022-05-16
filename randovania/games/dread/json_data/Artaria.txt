@@ -92,22 +92,6 @@ Extra - asset_id: collision_camera_000
   > Tile Group (MISSILE) 2
       Can Slide
 
-> Tile Group (POWERBEAM) 2; Heals? False
-  * Layers: default
-  * Configurable Node
-  * Extra - actor_name: breakabletilegroup_054
-  * Extra - actor_def: actordef:actors/logic/breakabletilegroup/charclasses/breakabletilegroup.bmsad
-  * Extra - actor_layer: breakables
-  * Extra - tile_types: ('POWERBEAM',)
-
-> Tile Group (POWERBEAM) 3; Heals? False
-  * Layers: default
-  * Configurable Node
-  * Extra - actor_name: breakabletilegroup_055
-  * Extra - actor_def: actordef:actors/logic/breakabletilegroup/charclasses/breakabletilegroup.bmsad
-  * Extra - actor_layer: breakables
-  * Extra - tile_types: ('POWERBEAM',)
-
 > Tile Group (MISSILE) 2; Heals? False
   * Layers: default
   * Configurable Node
@@ -147,10 +131,14 @@ Extra - asset_id: collision_camera_000
   > Door to Charge Tutorial
       After Artaria - First Tutorial Blob
   > Event - First Tutorial Blob
-      Wave Beam or Shoot Diffusion Beam
+      Shoot Diffusion or Wave
   > Ammo Recharge
       Any of the following:
-          Can Slide Underwater
+          All of the following:
+              Can Slide Underwater
+              Any of the following:
+                  Gravity Suit or Perform Water Bomb Jump or Perform Water Cross Jump or Use Spin Boost
+                  Flash Shift and Walljump (Beginner)
           Before Artaria - EMMI Zone Water Device and Can Slide
 
 > Tunnel to First Tutorial Access; Heals? False
@@ -251,7 +239,9 @@ Extra - asset_id: collision_camera_002
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
   > Door to Navigation Station South
-      Simple IBJ or Use Spin Boost
+      Any of the following:
+          Simple IBJ or Use Spin Boost
+          Speed Booster and Can Slide
   > Tunnel to Melee Tutorial Room
       Trivial
 
@@ -284,9 +274,9 @@ Melee Tutorial Room
 Extra - total_boundings: {'x1': 10800.0, 'x2': 14900.0, 'y1': -8500.0, 'y2': -1200.0}
 Extra - polygon: [[14900.0, -1200.0], [12800.0, -1200.0], [12800.0, -2000.0], [10800.0, -2000.0], [10800.0, -8500.0], [13800.0, -8500.0], [13800.0, -7000.0], [14900.0, -4100.0]]
 Extra - asset_id: collision_camera_003
-> Door from Proto EMMI Introduction; Heals? False
+> Door to Proto EMMI Introduction (Lower); Heals? False
   * Layers: default
-  * Access Closed to Proto EMMI Introduction/Door to Melee Tutorial Room (Lower)
+  * Access Locked to Proto EMMI Introduction/Door to Melee Tutorial Room (Lower)
   * Extra - actor_name: Door010 (CL-PW,OP)
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -330,7 +320,7 @@ Extra - asset_id: collision_camera_003
   * Extra - actor_name: DoorEmmy11
   * Extra - actor_def: actordef:actors/props/dooremmy/charclasses/dooremmy.bmsad
   > Door to Early Cloak Room
-      Walljump (Beginner) or Simple IBJ or Use Spin Boost
+      Speed Booster or Walljump (Beginner) or Simple IBJ or Use Spin Boost
   > Tile Group (BOMB)
       Morph Ball
 
@@ -342,7 +332,7 @@ Extra - asset_id: collision_camera_003
   > Near Missile Tank 1
       Morph Ball
 
-> Door to Proto EMMI Introduction; Heals? False
+> Door to Proto EMMI Introduction (Upper); Heals? False
   * Layers: default
   * Power Beam Door to Proto EMMI Introduction/Door to Melee Tutorial Room (Upper)
   * Extra - actor_name: Door055 (PW-PW)
@@ -359,7 +349,7 @@ Extra - asset_id: collision_camera_003
   * Pickup 31; Major Location? False
   * Extra - actor_name: item_missiletank_005
   * Extra - actor_def: actordef:actors/items/item_missiletank/charclasses/item_missiletank.bmsad
-  > Door to Proto EMMI Introduction
+  > Door to Proto EMMI Introduction (Upper)
       Trivial
   > East of Blob
       Trivial
@@ -396,7 +386,7 @@ Extra - asset_id: collision_camera_003
 > Tunnel to Melee Tutorial West; Heals? False
   * Layers: default
   * Slide Tunnel to Melee Tutorial West/Tunnel to Melee Tutorial Room
-  > Door from Proto EMMI Introduction
+  > Door to Proto EMMI Introduction (Lower)
       Trivial
   > Near Missile Tank 1
       Any of the following:
@@ -411,7 +401,7 @@ Extra - asset_id: collision_camera_003
 
 > West of Blob; Heals? False; Spawn Point
   * Layers: default
-  > Door from Proto EMMI Introduction
+  > Door to Proto EMMI Introduction (Lower)
       Trivial
   > Door to Save Station South
       After Artaria - Proto EMMI Blob
@@ -420,14 +410,14 @@ Extra - asset_id: collision_camera_003
   > East of Blob
       Morph Ball and After Artaria - Proto EMMI Blob
   > Event - Proto EMMI Blob (West Side)
-      Wave Beam or Pseudo-Wave Beam (Beginner) or Shoot Diffusion Beam
+      Pseudo-Wave Beam (Beginner) or Shoot Diffusion or Wave
 
 > Near Missile Tank 1; Heals? False
   * Layers: default
   > Pickup (Missile Tank 1)
       Morph Ball
   > Tile Group (BOMB)
-      Can Slide
+      Morph Ball
   > Tunnel to Melee Tutorial West
       Trivial
 
@@ -554,12 +544,12 @@ Extra - asset_id: collision_camera_005
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door from White EMMI Arena
+  > Door to White EMMI Arena
       Trivial
 
-> Door from White EMMI Arena; Heals? False
+> Door to White EMMI Arena; Heals? False
   * Layers: default
-  * Access Closed to White EMMI Arena/Door to EMMI Zone First Entrance
+  * Access Locked to White EMMI Arena/Door to EMMI Zone First Entrance
   * Extra - actor_name: Door018 (CG-CL,OP)
   * Extra - actor_def: actordef:actors/props/doorpowerclosed/charclasses/doorpowerclosed.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -617,7 +607,7 @@ Extra - asset_id: collision_camera_005
   * Layers: default
   * Extra - start_point_actor_name: SP_Checkpoint_EmmyCave
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad
-  > Door from White EMMI Arena
+  > Door to White EMMI Arena
       Trivial
   > Door to White EMMI Introduction
       Trivial
@@ -763,7 +753,7 @@ Extra - polygon: [[8900.0, 4400.0], [5800.0, 4400.0], [5800.0, 300.0], [8900.0, 
 Extra - asset_id: collision_camera_008
 > Door to EMMI Zone Exit North (Bottom); Heals? False
   * Layers: default
-  * Power Beam Door to EMMI Zone Exit North/Door to Teleport to Dairon
+  * Power Beam Door to EMMI Zone Exit North/Door to Teleport to Dairon (Power)
   * Extra - actor_name: Door020 (PW-PW)
   * Extra - actor_def: actordef:actors/props/doorpowerpower/charclasses/doorpowerpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -861,7 +851,7 @@ Extra - asset_id: collision_camera_008
 
 > Door to EMMI Zone Exit North (Upper); Heals? False
   * Layers: default
-  * Wide Beam Door to EMMI Zone Exit North/Dock from Teleport to Dairon
+  * Wide Beam Door to EMMI Zone Exit North/Door to Teleport to Dairon (Wide)
   * Extra - actor_name: Door028
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -945,7 +935,7 @@ EMMI Zone Exit North
 Extra - total_boundings: {'x1': 699.9979858398438, 'x2': 5900.0, 'y1': 1800.0, 'y2': 4900.0}
 Extra - polygon: [[700.0, 4900.0], [699.9979858398438, 1800.0], [5900.0, 1800.0], [5900.0, 4900.0]]
 Extra - asset_id: collision_camera_009
-> Door to Teleport to Dairon; Heals? False
+> Door to Teleport to Dairon (Power); Heals? False
   * Layers: default
   * Power Beam Door to Teleport to Dairon/Door to EMMI Zone Exit North (Bottom)
   * Extra - actor_name: Door020 (PW-PW)
@@ -956,7 +946,7 @@ Extra - asset_id: collision_camera_009
   * Extra - right_shield_def: None
   > Door to EMMI Zone Dome
       Trivial
-  > Dock from Teleport to Dairon
+  > Door to Teleport to Dairon (Wide)
       Trivial
 
 > Door to EMMI Zone Dome; Heals? False
@@ -968,7 +958,7 @@ Extra - asset_id: collision_camera_009
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door to Teleport to Dairon
+  > Door to Teleport to Dairon (Power)
       Trivial
   > Tunnel to Teleport to Dairon
       Trivial
@@ -993,16 +983,16 @@ Extra - asset_id: collision_camera_009
   > Tile Group (POWERBEAM)
       Trivial
 
-> Dock from Teleport to Dairon; Heals? False
+> Door to Teleport to Dairon (Wide); Heals? False
   * Layers: default
-  * Blocked Passage to Teleport to Dairon/Door to EMMI Zone Exit North (Upper)
+  * Access Locked to Teleport to Dairon/Door to EMMI Zone Exit North (Upper)
   * Extra - actor_name: Door028
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:doorwidebeam_000
   * Extra - right_shield_def: actordef:actors/props/doorwidebeam/charclasses/doorwidebeam.bmsad
-  > Door to Teleport to Dairon
+  > Door to Teleport to Dairon (Power)
       Trivial
 
 > Tile Group (POWERBEAM); Heals? False
@@ -1057,7 +1047,7 @@ Extra - asset_id: collision_camera_009
 
 > Start Point; Heals? False; Spawn Point
   * Layers: default
-  > Door to Teleport to Dairon
+  > Door to Teleport to Dairon (Power)
       Trivial
 
 ----------------
@@ -1816,7 +1806,7 @@ Extra - polygon: [[17800.0, -1200.0], [14800.0, -1200.0], [14800.0, -3700.0], [1
 Extra - asset_id: collision_camera_016
 > Door to Melee Tutorial Room (Lower); Heals? False
   * Layers: default
-  * Power Beam Door to Melee Tutorial Room/Door from Proto EMMI Introduction
+  * Power Beam Door to Melee Tutorial Room/Door to Proto EMMI Introduction (Lower)
   * Extra - actor_name: Door010 (CL-PW,OP)
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -1828,7 +1818,7 @@ Extra - asset_id: collision_camera_016
 
 > Door to Melee Tutorial Room (Upper); Heals? False
   * Layers: default
-  * Power Beam Door to Melee Tutorial Room/Door to Proto EMMI Introduction
+  * Power Beam Door to Melee Tutorial Room/Door to Proto EMMI Introduction (Upper)
   * Extra - actor_name: Door055 (PW-PW)
   * Extra - actor_def: actordef:actors/props/doorpowerpower/charclasses/doorpowerpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -1839,9 +1829,10 @@ Extra - asset_id: collision_camera_016
       After Artaria - Proto Central Unit or Can Slide
   > Tile Group (BOMB)
       All of the following:
-          # TODO: Check if it's viable to get this with ice missiles?
           Morph Ball
-          Flash Shift or Use Spin Boost
+          Any of the following:
+              Flash Shift or Use Spin Boost
+              After Elun - Release X Parasites and Movement (Beginner) and Shoot Ice Missile
 
 > Pickup (Missile Tank); Heals? False
   * Layers: default
@@ -1863,9 +1854,14 @@ Extra - asset_id: collision_camera_016
   > Door to Melee Tutorial Room (Lower)
       After Artaria - Proto Central Unit
   > Door to Melee Tutorial Room (Upper)
-      Space Jump and After Artaria - Proto Central Unit
-  > Tile Group (BOMB)
-      Flash Shift and Simple IBJ
+      All of the following:
+          After Artaria - Proto Central Unit
+          Any of the following:
+              Space Jump
+              Spin Boost and Walljump (Beginner)
+              All of the following:
+                  Flash Shift or Spin Boost
+                  Speed Booster or Simple IBJ
 
 > Tile Group (BOMB); Heals? False
   * Layers: default
@@ -1890,7 +1886,7 @@ White EMMI Arena
 Extra - total_boundings: {'x1': 2700.0, 'x2': 5900.0, 'y1': -6450.0, 'y2': -1700.0}
 Extra - polygon: [[5900.0, -1700.0], [2700.0, -1700.0], [2700.0, -6450.0], [5900.0, -6450.0]]
 Extra - asset_id: collision_camera_017
-> Door to Central Unit Access; Heals? False
+> Door to Central Unit Access (Charge); Heals? False
   * Layers: default
   * Charge Beam Door to Central Unit Access/Door to White EMMI Arena (Top)
   * Extra - actor_name: Door015 (CG-CG)
@@ -1920,7 +1916,7 @@ Extra - asset_id: collision_camera_017
 
 > Door to EMMI Zone First Entrance; Heals? False
   * Layers: default
-  * Power Beam Door to EMMI Zone First Entrance/Door from White EMMI Arena
+  * Power Beam Door to EMMI Zone First Entrance/Door to White EMMI Arena
   * Extra - actor_name: Door018 (CG-CL,OP)
   * Extra - actor_def: actordef:actors/props/doorpowerclosed/charclasses/doorpowerclosed.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -1932,9 +1928,9 @@ Extra - asset_id: collision_camera_017
   > Door to EMMI Zone Spinner (DoorFrame_011)
       Simple IBJ or Use Spin Boost
 
-> Door from Central Unit Access; Heals? False
+> Door to Central Unit Access (Power); Heals? False
   * Layers: default
-  * Access Closed to Central Unit Access/Door to White EMMI Arena (Bottom)
+  * Access Locked to Central Unit Access/Door to White EMMI Arena (Bottom)
   * Extra - actor_name: Door059 (CL-PW)
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -1955,7 +1951,7 @@ Extra - asset_id: collision_camera_017
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door from Central Unit Access
+  > Door to Central Unit Access (Power)
       Trivial
 
 > Door to EMMI Zone Spinner (DoorFrame_010); Heals? False
@@ -1967,7 +1963,7 @@ Extra - asset_id: collision_camera_017
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door to Central Unit Access
+  > Door to Central Unit Access (Charge)
       Trivial
   > Door to EMMI Zone First Entrance
       Trivial
@@ -1988,11 +1984,11 @@ Extra - asset_id: collision_camera_017
   * Layers: default
   * Extra - start_point_actor_name: SP_Checkpoint_MagnetGlove
   * Extra - start_point_actor_def: actordef:actors/logic/startpoint/charclasses/startpoint.bmsad
-  > Door to Central Unit Access
+  > Door to Central Unit Access (Charge)
       Trivial
   > Door to EMMI Zone Spinner (1)
       Grapple Beam or Spider Magnet or Simple IBJ or Use Spin Boost
-  > Door from Central Unit Access
+  > Door to Central Unit Access (Power)
       Trivial
   > Tunnel to EMMI Zone Spinner
       Trivial
@@ -2462,7 +2458,7 @@ Extra - polygon: [[-8100.0, 9200.0], [-12200.0, 9200.0], [-12200.0, 4700.0], [-8
 Extra - asset_id: collision_camera_026
 > Door to Varia Suit Tutorial North; Heals? False
   * Layers: default
-  * Power Beam Door to Varia Suit Tutorial North/Door to Chain Reaction Room
+  * Access Locked to Varia Suit Tutorial North/Door to Chain Reaction Room
   * Extra - actor_name: Door057
   * Extra - actor_def: actordef:actors/props/doorclosedcharge/charclasses/doorclosedcharge.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -3130,7 +3126,7 @@ Extra - polygon: [[8350.0, -3600.0], [5800.0, -3600.0], [5800.0, -6450.0], [8350
 Extra - asset_id: collision_camera_049
 > Door to White EMMI Arena (Top); Heals? False
   * Layers: default
-  * Charge Beam Door to White EMMI Arena/Door to Central Unit Access
+  * Charge Beam Door to White EMMI Arena/Door to Central Unit Access (Charge)
   * Extra - actor_name: Door015 (CG-CG)
   * Extra - actor_def: actordef:actors/props/doorchargecharge/charclasses/doorchargecharge.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -3144,7 +3140,7 @@ Extra - asset_id: collision_camera_049
 
 > Door to White EMMI Arena (Bottom); Heals? False
   * Layers: default
-  * Power Beam Door to White EMMI Arena/Door from Central Unit Access
+  * Power Beam Door to White EMMI Arena/Door to Central Unit Access (Power)
   * Extra - actor_name: Door059 (CL-PW)
   * Extra - actor_def: actordef:actors/props/doorclosedpower/charclasses/doorclosedpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -4117,7 +4113,7 @@ Path to Thermal Device
 Extra - total_boundings: {'x1': 19800.0, 'x2': 22900.0, 'y1': 958.0, 'y2': 2100.0}
 Extra - polygon: [[22900.0, 2100.0], [19800.0, 2100.0], [19800.0, 958.0], [22900.0, 958.0]]
 Extra - asset_id: collision_camera_066
-> Door to Thermal Device; Heals? False
+> Door to Thermal Device (Lower); Heals? False
   * Layers: default
   * Power Beam Door to Thermal Device/Door to Path to Thermal Device (Lower)
   * Extra - actor_name: Door033 (PW-PW)
@@ -4128,7 +4124,7 @@ Extra - asset_id: collision_camera_066
   * Extra - right_shield_def: None
   > Door to Save Station East
       Trivial
-  > Door from Thermal Device
+  > Door to Thermal Device (Upper)
       Trivial
 
 > Door to Save Station East; Heals? False
@@ -4140,24 +4136,24 @@ Extra - asset_id: collision_camera_066
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door to Thermal Device
+  > Door to Thermal Device (Lower)
       Trivial
 
-> Door from Thermal Device; Heals? False
+> Door to Thermal Device (Upper); Heals? False
   * Layers: default
-  * Access Closed to Thermal Device/Door to Path to Thermal Device (Upper)
+  * Access Locked to Thermal Device/Door to Path to Thermal Device (Upper)
   * Extra - actor_name: Door046 (PW-CL,OP)
   * Extra - actor_def: actordef:actors/props/doorpowerclosed/charclasses/doorpowerclosed.bmsad
   * Extra - left_shield_entity: {EMPTY}
   * Extra - left_shield_def: None
   * Extra - right_shield_entity: {EMPTY}
   * Extra - right_shield_def: None
-  > Door to Thermal Device
+  > Door to Thermal Device (Lower)
       Trivial
 
 > Start Point; Heals? False; Spawn Point
   * Layers: default
-  > Door to Thermal Device
+  > Door to Thermal Device (Lower)
       Trivial
 
 ----------------
@@ -4168,7 +4164,7 @@ Extra - polygon: [[19900.0, 2600.0], [17800.0, 2600.0], [17800.0, 900.0], [19900
 Extra - asset_id: collision_camera_067
 > Door to Path to Thermal Device (Lower); Heals? False
   * Layers: default
-  * Power Beam Door to Path to Thermal Device/Door to Thermal Device
+  * Power Beam Door to Path to Thermal Device/Door to Thermal Device (Lower)
   * Extra - actor_name: Door033 (PW-PW)
   * Extra - actor_def: actordef:actors/props/doorpowerpower/charclasses/doorpowerpower.bmsad
   * Extra - left_shield_entity: {EMPTY}
@@ -4192,7 +4188,7 @@ Extra - asset_id: collision_camera_067
 
 > Door to Path to Thermal Device (Upper); Heals? False
   * Layers: default
-  * Power Beam Door to Path to Thermal Device/Door from Thermal Device
+  * Power Beam Door to Path to Thermal Device/Door to Thermal Device (Upper)
   * Extra - actor_name: Door046 (PW-CL,OP)
   * Extra - actor_def: actordef:actors/props/doorpowerclosed/charclasses/doorpowerclosed.bmsad
   * Extra - left_shield_entity: {EMPTY}

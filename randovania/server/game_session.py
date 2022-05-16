@@ -40,10 +40,10 @@ def _describe_session(session: GameSession, membership: Optional[GameSessionMemb
         return f"Session {session.id} ({session.name})"
 
 
-def list_game_sessions(sio: ServerApp):
+def list_game_sessions(sio: ServerApp, limit: Optional[int]):
     return [
         session.create_list_entry()
-        for session in GameSession.select()
+        for session in GameSession.select().order_by(GameSession.id.desc()).limit(limit)
     ]
 
 
@@ -729,9 +729,9 @@ def report_user_disconnected(sio: ServerApp, user_id: int, log):
 
 
 def setup_app(sio: ServerApp):
-    sio.on("list_game_sessions", list_game_sessions)
-    sio.on("create_game_session", create_game_session)
-    sio.on("join_game_session", join_game_session)
+    sio.on("list_game_sessions", list_game_sessions, with_header_check=True)
+    sio.on("create_game_session", create_game_session, with_header_check=True)
+    sio.on("join_game_session", join_game_session, with_header_check=True)
     sio.on("disconnect_game_session", disconnect_game_session)
     sio.on("game_session_request_update", game_session_request_update)
     sio.on("game_session_admin_session", game_session_admin_session)

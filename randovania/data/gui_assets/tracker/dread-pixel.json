@@ -1,0 +1,35 @@
+{
+    "game": "prime1",
+    "elements": [
+        { "row": 1, "column": 0, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/missile.gif" },
+        { "row": 1, "column": 1, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/super_missile.gif" },
+        { "row": 1, "column": 2, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/ice_missile.gif" },
+        { "row": 1, "column": 3, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/storm_missile.gif" },
+
+        { "row": 2, "column": 0, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/morph_ball.gif" },
+        { "row": 2, "column": 1, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/morph_ball_bomb.gif" },
+        { "row": 2, "column": 2, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/cross_bomb.gif" },
+        { "row": 2, "column": 3, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/power_bomb.gif" },
+
+        { "row": 0, "column": 0, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/charge_beam.gif" },
+        { "row": 0, "column": 1, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/diffusion_beam.gif" },
+        { "row": 0, "column": 2, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/wide_beam.gif" },
+        { "row": 0, "column": 3, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/plasma_beam.gif" },
+        { "row": 0, "column": 4, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/wave_beam.gif" },
+
+        { "row": 3, "column": 3, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/grapple_beam.gif" },
+        { "row": 3, "column": 0, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/phantom_cloak.gif" },
+        { "row": 3, "column": 1, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/flash_shift.gif" },
+        { "row": 3, "column": 2, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/pulse_radar.gif" },
+        
+        { "row": 4, "column": 3, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/screw_attack.gif" },
+        { "row": 4, "column": 0, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/spider_magnet.gif" },
+        { "row": 4, "column": 1, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/spin_boost.gif" },
+        { "row": 4, "column": 2, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/space_jump.gif" },
+
+        { "row": 1, "column": 4, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/varia_suit.gif" },
+        { "row": 2, "column": 4, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/gravity_suit.gif" },
+
+        { "row": 3, "column": 4, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/speed_booster.gif" },
+        { "row": 4, "column": 4, "resources": [], "image_path": "gui_assets/tracker/pixel-images/dread/energy_tank.gif" },
+        { "row": 5, "column": 4, "label": "x {amount}", "resources": ["Energy Tank"] } ] }

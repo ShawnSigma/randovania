@@ -2,9 +2,6 @@ import logging
 import os
 from typing import Optional, Union
 
-from open_dread_rando.version import version as open_dread_rando_version
-
-from randovania import VERSION
 from randovania.exporter import pickup_exporter, item_names
 from randovania.exporter.hints.hint_exporter import HintExporter
 from randovania.exporter.patch_data_factory import BasePatchDataFactory
@@ -56,7 +53,7 @@ class DreadPatchDataFactory(BasePatchDataFactory):
 
         self.memo_data["Energy Tank"] = f"Energy Tank acquired.\nEnergy capacity increased by {self.configuration.energy_per_tank:g}."
         if self.configuration.immediate_energy_parts:
-            self.memo_data["Energy Part"] = f"Energy Fragment acquired.\nEnergy capacity increased by {self.configuration.energy_per_tank/4:g}."
+            self.memo_data["Energy Part"] = f"Energy Part acquired.\nEnergy capacity increased by {self.configuration.energy_per_tank/4:g}."
 
     def game_enum(self) -> RandovaniaGame:
         return RandovaniaGame.METROID_DREAD
@@ -199,11 +196,13 @@ class DreadPatchDataFactory(BasePatchDataFactory):
                     "map_icon": map_icon,
                 })
             else:
-                details.update({
-                    "pickup_actordef": pickup_node.extra["actor_def"],
-                    "pickup_string_key": pickup_node.extra["string_key"],
-                    "pickup_lua_callback": self._callback_ref_for(pickup_node),
-                })
+                details["pickup_lua_callback"] = self._callback_ref_for(pickup_node)
+                if pickup_type != "cutscene":
+                    details.update({
+                        "pickup_actordef": pickup_node.extra["actor_def"],
+                        "pickup_string_key": pickup_node.extra["string_key"],
+                    })
+
             return details
         except KeyError as e:
             logging.warning(e)
@@ -239,8 +238,17 @@ class DreadPatchDataFactory(BasePatchDataFactory):
             text[difficulty] = full_hash
 
         text["GUI_COMPANY_TITLE_SCREEN"] = "|".join([
-            f"Randovania {VERSION} - open-dread-rando {open_dread_rando_version}",
+            "<versions>",
             full_hash
+        ])
+
+        # Warning message for continuing a non-rando game file
+        text["GUI_WARNING_NOT_RANDO_GAME_1"] = "|".join([
+            r"{c2}Error!{c0}",
+            "This save slot was created using a different Randomizer mod.",
+        ])
+        text["GUI_WARNING_NOT_RANDO_GAME_2"] = "|".join([
+            "You must start a New Game from a blank save slot. Returning to title screen.",
         ])
 
         return text
@@ -257,6 +265,28 @@ class DreadPatchDataFactory(BasePatchDataFactory):
                 }
             }
         }
+
+    def _door_patches(self):
+        wl = self.game.world_list
+
+        result = []
+        used_actors = {}
+
+        for identifier, weakness in self.patches.dock_weakness.items():
+            if "type" not in weakness.extra:
+                raise ValueError(f"Unable to change door {identifier} into {weakness.name}: incompatible door weakness")
+
+            result.append({
+                "actor": (actor := self._teleporter_ref_for(wl.node_by_identifier(identifier))),
+                "door_type": (door_type := weakness.extra["type"]),
+            })
+            actor_idef = str(actor)
+            if used_actors.get(actor_idef, door_type) != door_type:
+                raise ValueError(f"Door for {identifier} ({actor}) previously "
+                                 f"patched to use {used_actors[actor_idef]}, tried to change to {door_type}.")
+            used_actors[actor_idef] = door_type
+
+        return result
 
     def create_data(self) -> dict:
         starting_location = self._start_point_ref_for(self._node_for(self.patches.starting_location))
@@ -278,6 +308,7 @@ class DreadPatchDataFactory(BasePatchDataFactory):
         )
 
         return {
+            "configuration_identifier": self.description.shareable_hash,
             "starting_location": starting_location,
             "starting_items": starting_items,
             "starting_text": starting_text,
@@ -297,6 +328,13 @@ class DreadPatchDataFactory(BasePatchDataFactory):
             "text_patches": self._static_text_changes(),
             "cosmetic_patches": self._cosmetic_patch_data(),
             "immediate_energy_parts": self.configuration.immediate_energy_parts,
+            "game_patches": {
+                "consistent_raven_beak_damage_table": True,
+                "remove_grapple_blocks_hanubia_shortcut": self.configuration.hanubia_shortcut_no_grapple,
+                "remove_grapple_block_path_to_itorash": self.configuration.hanubia_easier_path_to_itorash,
+                "default_x_released": self.configuration.x_starts_released,
+            },
+            "door_patches": self._door_patches(),
         }
 
 
