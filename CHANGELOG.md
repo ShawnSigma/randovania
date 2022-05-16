@@ -5,13 +5,70 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [4.3.0] - Unreleased
+## [4.4.0] - 2022-06-01
+
+- Changed: Reduced the lag you get the first time you open the Games tab.
+- Removed: The server and discord bot are entirely removed from the distributed executables.
+
+### Cave Story
+
+- Fixed: Hint Locations tab in Help no longer has an empty column named "2".
+
+#### Patcher Changes
+
+- Nothing.
+
+#### Logic Database
+
+- Nothing.
+
+### Metroid Prime
+
+- Nothing.
+
+#### Patcher Changes
+
+- Nothing.
+
+#### Logic Database
+
+- Nothing.
+
+### Metroid Prime 2: Echoes
+
+- Nothing.
+
+#### Patcher Changes
+
+- Nothing.
+
+#### Logic Database
+
+- Nothing.
+
+## [4.3.2] - 2022-05-13
+
+### Metroid Prime
+
+- Fixed: Lightshow during Chapel IS after Chapel item has been obtained and room has been reloaded
+
+### Metroid Prime 2: Echoes
+
+- Fixed: Significantly reduced lag spikes when loading a room containing Prime1 models.
+
+## [4.3.1] - 2022-05-08
+
+- Added: Phazon Suit hints are now included in the preset description.
+- Fixed: Exporting Prime 1 games that have no Phazon Suit no longer fails if it's configured to have a hint.
+
+## [4.3.0] - 2022-05-01
 
 - Added: Destroying door locks is now properly tracked. In Echoes, this means removing a door lock from the back allows for logical access to where you were.
 - Added: In Data Visualizer, it's now possible to set tricks to a certain level and simplify all visible connections based on that.
 - Fixed: Maximum values for certain preset fields, such as Energy Tank capacity and Superheated Room Probability, can now properly be used.
 - Fixed: A race condition with Randovania connected to Nintendont, where Randovania could incorrectly assume the game was idle if memory was read while it was executing the last sent task.
-- Fixed: The map tracker now properly handles when multiple nodes gives the same resource/event. 
+- Fixed: The map tracker now properly handles when multiple nodes gives the same resource/event.
+- Changed: Online game list by default only shows 100 sessions, for performance reasons. Press "Refresh" to get all.
 
 ### Cave Story
 
@@ -27,8 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Metroid Prime
 
+- Added: Option to specify hint for Phazon Suit in Impact Crater (default=Show only area name)
 - Added: April Fools Preset
-- Added: Flaahgra is now included in "Random Boss Sizes" option
 - Added: Map images are now generated and written in the same folder as output ISO when generating room rando seeds and exporting them with spoilers enabled.
 - Fixed: Random Superheated, Random Submerged and Dangerous Gravity Suit logic now trigger dialog warning in Multiword sessions
 - Fixed: Adjusted min/max boss sizes to prevent softlocks
@@ -38,19 +95,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Patcher Changes
 
-Room Rando:
-    - Added: Include Square Frigate doors and morph ball tunnels during randomization
-    - Fixed: Crash when opening the map near certain rooms
-    - Fixed: Crashes due to two large rooms being connected.
-    - Fixed: Crash when rolling through some doors in morph ball
-    - Fixed: Central Dynamo reposition soft-lock
-    - Fixed: Inability to scan vertical doors
-    - Changed: The door immediately behind the player is unlocked when teleporting to a new room. This gives the player one chance to backtrack before commiting to the warp.
-
 - Fixed: Specifying custom heat-damage-per-second now properly affects non-vanilla superheated rooms
+- Fixed: Some akward cutscene timing when playing skipped cutscenes in realtime
 - Added: Random boss sizes now affects Flaahgra, Plated Beetle and Cloaked Drone
 - Changed: Random boss sizes now affects bosses in cutscenes, additionally Omega Pirate's armor plates now scale properly
 - Changed: When creating a new save file, the default selection is now "Normal" to help prevent accidentally starting the game on Hard mode
+- Changed: Artifacts which do have no need to be collected are removed from the logbook
+
+##### Room Rando
+- Added: Include Square Frigate doors and morph ball tunnels during randomization
+- Fixed: Crash when opening the map near certain rooms
+- Fixed: Crashes due to two large rooms being connected.
+- Fixed: Crash when rolling through some doors in morph ball
+- Fixed: Central Dynamo reposition soft-lock
+- Fixed: Inability to scan vertical doors
+- Fixed: Incompatability with "No Doors" + "Room Rando"
+- Changed: The door immediately behind the player is unlocked when teleporting to a new room. This gives the player one chance to backtrack before commiting to the warp.
 
 #### Logic Database
 
@@ -58,6 +118,7 @@ Room Rando:
 
 ### Metroid Prime 2: Echoes
 
+- Added: Preset descriptions now list custom beam ammo configuration.
 - Changed: Optimized how long it takes to export a game that uses Prime 1 models.
 
 #### Patcher Changes
@@ -67,8 +128,6 @@ Room Rando:
 #### Logic Database
 
 - Nothing.
-
-## [4.2.2] - Unreleased
 
 ## [4.2.1] - 2022-04-01
 

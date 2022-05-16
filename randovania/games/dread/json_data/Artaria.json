@@ -373,50 +373,6 @@
                         }
                     }
                 },
-                "Tile Group (POWERBEAM) 2": {
-                    "node_type": "configurable_node",
-                    "heal": false,
-                    "coordinates": {
-                        "x": 3700.0,
-                        "y": -8100.0,
-                        "z": 0.0
-                    },
-                    "description": "",
-                    "layers": [
-                        "default"
-                    ],
-                    "extra": {
-                        "actor_name": "breakabletilegroup_054",
-                        "actor_def": "actordef:actors/logic/breakabletilegroup/charclasses/breakabletilegroup.bmsad",
-                        "actor_layer": "breakables",
-                        "tile_types": [
-                            "POWERBEAM"
-                        ]
-                    },
-                    "connections": {}
-                },
-                "Tile Group (POWERBEAM) 3": {
-                    "node_type": "configurable_node",
-                    "heal": false,
-                    "coordinates": {
-                        "x": 3200.0,
-                        "y": -8400.0,
-                        "z": 0.0
-                    },
-                    "description": "",
-                    "layers": [
-                        "default"
-                    ],
-                    "extra": {
-                        "actor_name": "breakabletilegroup_055",
-                        "actor_def": "actordef:actors/logic/breakabletilegroup/charclasses/breakabletilegroup.bmsad",
-                        "actor_layer": "breakables",
-                        "tile_types": [
-                            "POWERBEAM"
-                        ]
-                    },
-                    "connections": {}
-                },
                 "Tile Group (MISSILE) 2": {
                     "node_type": "configurable_node",
                     "heal": false,
@@ -551,25 +507,8 @@
                             }
                         },
                         "Event - First Tutorial Blob": {
-                            "type": "or",
-                            "data": {
-                                "comment": null,
-                                "items": [
-                                    {
-                                        "type": "resource",
-                                        "data": {
-                                            "type": "items",
-                                            "name": "Wave",
-                                            "amount": 1,
-                                            "negate": false
-                                        }
-                                    },
-                                    {
-                                        "type": "template",
-                                        "data": "Shoot Diffusion Beam"
-                                    }
-                                ]
-                            }
+                            "type": "template",
+                            "data": "Shoot Diffusion or Wave"
                         },
                         "Ammo Recharge": {
                             "type": "or",
@@ -577,8 +516,71 @@
                                 "comment": null,
                                 "items": [
                                     {
-                                        "type": "template",
-                                        "data": "Can Slide Underwater"
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "template",
+                                                    "data": "Can Slide Underwater"
+                                                },
+                                                {
+                                                    "type": "or",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "items",
+                                                                    "name": "Gravity",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "template",
+                                                                "data": "Use Spin Boost"
+                                                            },
+                                                            {
+                                                                "type": "and",
+                                                                "data": {
+                                                                    "comment": null,
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Flash",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "tricks",
+                                                                                "name": "Walljump",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "template",
+                                                                "data": "Perform Water Bomb Jump"
+                                                            },
+                                                            {
+                                                                "type": "template",
+                                                                "data": "Perform Water Cross Jump"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
                                     },
                                     {
                                         "type": "and",
@@ -1013,6 +1015,27 @@
                                     {
                                         "type": "template",
                                         "data": "Simple IBJ"
+                                    },
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Speed",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "template",
+                                                    "data": "Can Slide"
+                                                }
+                                            ]
+                                        }
                                     }
                                 ]
                             }
@@ -1169,7 +1192,7 @@
                 "asset_id": "collision_camera_003"
             },
             "nodes": {
-                "Door from Proto EMMI Introduction": {
+                "Door to Proto EMMI Introduction (Lower)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -1195,7 +1218,7 @@
                         "area_name": "Proto EMMI Introduction",
                         "node_name": "Door to Melee Tutorial Room (Lower)"
                     },
-                    "default_dock_weakness": "Access Closed",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -1351,6 +1374,15 @@
                                     {
                                         "type": "template",
                                         "data": "Simple IBJ"
+                                    },
+                                    {
+                                        "type": "resource",
+                                        "data": {
+                                            "type": "items",
+                                            "name": "Speed",
+                                            "amount": 1,
+                                            "negate": false
+                                        }
                                     }
                                 ]
                             }
@@ -1396,7 +1428,7 @@
                         }
                     }
                 },
-                "Door to Proto EMMI Introduction": {
+                "Door to Proto EMMI Introduction (Upper)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -1454,7 +1486,7 @@
                     "pickup_index": 31,
                     "major_location": false,
                     "connections": {
-                        "Door to Proto EMMI Introduction": {
+                        "Door to Proto EMMI Introduction (Upper)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -1517,8 +1549,16 @@
                         "Pickup (Missile Tank 2)": {
                             "type": "and",
                             "data": {
-                                "comment": null,
-                                "items": []
+                                "comment": "Connection required to make things easier on the generator",
+                                "items": [
+                                    {
+                                        "type": "and",
+                                        "data": {
+                                            "comment": "Connection required to make things easier on the generator",
+                                            "items": []
+                                        }
+                                    }
+                                ]
                             }
                         },
                         "West of Blob": {
@@ -1611,7 +1651,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door from Proto EMMI Introduction": {
+                        "Door to Proto EMMI Introduction (Lower)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -1705,7 +1745,7 @@
                     ],
                     "extra": {},
                     "connections": {
-                        "Door from Proto EMMI Introduction": {
+                        "Door to Proto EMMI Introduction (Lower)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -1774,17 +1814,8 @@
                                 "comment": null,
                                 "items": [
                                     {
-                                        "type": "resource",
-                                        "data": {
-                                            "type": "items",
-                                            "name": "Wave",
-                                            "amount": 1,
-                                            "negate": false
-                                        }
-                                    },
-                                    {
                                         "type": "template",
-                                        "data": "Shoot Diffusion Beam"
+                                        "data": "Shoot Diffusion or Wave"
                                     },
                                     {
                                         "type": "resource",
@@ -1824,8 +1855,13 @@
                             }
                         },
                         "Tile Group (BOMB)": {
-                            "type": "template",
-                            "data": "Can Slide"
+                            "type": "resource",
+                            "data": {
+                                "type": "items",
+                                "name": "Morph",
+                                "amount": 1,
+                                "negate": false
+                            }
                         },
                         "Tunnel to Melee Tutorial West": {
                             "type": "and",
@@ -2398,7 +2434,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door from White EMMI Arena": {
+                        "Door to White EMMI Arena": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -2407,7 +2443,7 @@
                         }
                     }
                 },
-                "Door from White EMMI Arena": {
+                "Door to White EMMI Arena": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -2433,7 +2469,7 @@
                         "area_name": "White EMMI Arena",
                         "node_name": "Door to EMMI Zone First Entrance"
                     },
-                    "default_dock_weakness": "Access Closed",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -2708,7 +2744,7 @@
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
                     "connections": {
-                        "Door from White EMMI Arena": {
+                        "Door to White EMMI Arena": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -3374,7 +3410,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "EMMI Zone Exit North",
-                        "node_name": "Door to Teleport to Dairon"
+                        "node_name": "Door to Teleport to Dairon (Power)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -3745,7 +3781,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "EMMI Zone Exit North",
-                        "node_name": "Dock from Teleport to Dairon"
+                        "node_name": "Door to Teleport to Dairon (Wide)"
                     },
                     "default_dock_weakness": "Wide Beam Door",
                     "override_default_open_requirement": null,
@@ -4047,7 +4083,7 @@
                 "asset_id": "collision_camera_009"
             },
             "nodes": {
-                "Door to Teleport to Dairon": {
+                "Door to Teleport to Dairon (Power)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -4084,7 +4120,7 @@
                                 "items": []
                             }
                         },
-                        "Dock from Teleport to Dairon": {
+                        "Door to Teleport to Dairon (Wide)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -4123,7 +4159,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Teleport to Dairon": {
+                        "Door to Teleport to Dairon (Power)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -4218,7 +4254,7 @@
                         }
                     }
                 },
-                "Dock from Teleport to Dairon": {
+                "Door to Teleport to Dairon (Wide)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -4238,17 +4274,17 @@
                         "right_shield_entity": "Root:pScenario:rEntitiesLayer:dctSublayers:default:dctActors:doorwidebeam_000",
                         "right_shield_def": "actordef:actors/props/doorwidebeam/charclasses/doorwidebeam.bmsad"
                     },
-                    "dock_type": "other",
+                    "dock_type": "door",
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "Teleport to Dairon",
                         "node_name": "Door to EMMI Zone Exit North (Upper)"
                     },
-                    "default_dock_weakness": "Blocked Passage",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Teleport to Dairon": {
+                        "Door to Teleport to Dairon (Power)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -4455,7 +4491,7 @@
                     ],
                     "extra": {},
                     "connections": {
-                        "Door to Teleport to Dairon": {
+                        "Door to Teleport to Dairon (Power)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -7970,7 +8006,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "Melee Tutorial Room",
-                        "node_name": "Door from Proto EMMI Introduction"
+                        "node_name": "Door to Proto EMMI Introduction (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -8009,7 +8045,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "Melee Tutorial Room",
-                        "node_name": "Door to Proto EMMI Introduction"
+                        "node_name": "Door to Proto EMMI Introduction (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -8039,7 +8075,7 @@
                         "Tile Group (BOMB)": {
                             "type": "and",
                             "data": {
-                                "comment": "TODO: Check if it's viable to get this with ice missiles?",
+                                "comment": null,
                                 "items": [
                                     {
                                         "type": "resource",
@@ -8067,6 +8103,36 @@
                                                 {
                                                     "type": "template",
                                                     "data": "Use Spin Boost"
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "template",
+                                                                "data": "Shoot Ice Missile"
+                                                            },
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "tricks",
+                                                                    "name": "Movement",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "events",
+                                                                    "name": "ElunReleaseX",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
                                                 }
                                             ]
                                         }
@@ -8160,33 +8226,101 @@
                                         }
                                     },
                                     {
-                                        "type": "resource",
+                                        "type": "or",
                                         "data": {
-                                            "type": "items",
-                                            "name": "Space",
-                                            "amount": 1,
-                                            "negate": false
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                        "Tile Group (BOMB)": {
-                            "type": "and",
-                            "data": {
-                                "comment": null,
-                                "items": [
-                                    {
-                                        "type": "template",
-                                        "data": "Simple IBJ"
-                                    },
-                                    {
-                                        "type": "resource",
-                                        "data": {
-                                            "type": "items",
-                                            "name": "Flash",
-                                            "amount": 1,
-                                            "negate": false
+                                            "comment": null,
+                                            "items": [
+                                                {
+                                                    "type": "resource",
+                                                    "data": {
+                                                        "type": "items",
+                                                        "name": "Space",
+                                                        "amount": 1,
+                                                        "negate": false
+                                                    }
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "items",
+                                                                    "name": "Spin",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "resource",
+                                                                "data": {
+                                                                    "type": "tricks",
+                                                                    "name": "Walljump",
+                                                                    "amount": 1,
+                                                                    "negate": false
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "and",
+                                                    "data": {
+                                                        "comment": null,
+                                                        "items": [
+                                                            {
+                                                                "type": "or",
+                                                                "data": {
+                                                                    "comment": null,
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Flash",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Spin",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "or",
+                                                                "data": {
+                                                                    "comment": null,
+                                                                    "items": [
+                                                                        {
+                                                                            "type": "resource",
+                                                                            "data": {
+                                                                                "type": "items",
+                                                                                "name": "Speed",
+                                                                                "amount": 1,
+                                                                                "negate": false
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "template",
+                                                                            "data": "Simple IBJ"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
                                         }
                                     }
                                 ]
@@ -8303,7 +8437,7 @@
                 "asset_id": "collision_camera_017"
             },
             "nodes": {
-                "Door to Central Unit Access": {
+                "Door to Central Unit Access (Charge)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -8456,7 +8590,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "EMMI Zone First Entrance",
-                        "node_name": "Door from White EMMI Arena"
+                        "node_name": "Door to White EMMI Arena"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -8487,7 +8621,7 @@
                         }
                     }
                 },
-                "Door from Central Unit Access": {
+                "Door to Central Unit Access (Power)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -8513,7 +8647,7 @@
                         "area_name": "Central Unit Access",
                         "node_name": "Door to White EMMI Arena (Bottom)"
                     },
-                    "default_dock_weakness": "Access Closed",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -8563,7 +8697,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door from Central Unit Access": {
+                        "Door to Central Unit Access (Power)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -8602,7 +8736,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Central Unit Access": {
+                        "Door to Central Unit Access (Charge)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -8674,7 +8808,7 @@
                         "start_point_actor_def": "actordef:actors/logic/startpoint/charclasses/startpoint.bmsad"
                     },
                     "connections": {
-                        "Door to Central Unit Access": {
+                        "Door to Central Unit Access (Charge)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -8715,7 +8849,7 @@
                                 ]
                             }
                         },
-                        "Door from Central Unit Access": {
+                        "Door to Central Unit Access (Power)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -10772,7 +10906,7 @@
                         "area_name": "Varia Suit Tutorial North",
                         "node_name": "Door to Chain Reaction Room"
                     },
-                    "default_dock_weakness": "Power Beam Door",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
@@ -14076,7 +14210,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "White EMMI Arena",
-                        "node_name": "Door to Central Unit Access"
+                        "node_name": "Door to Central Unit Access (Charge)"
                     },
                     "default_dock_weakness": "Charge Beam Door",
                     "override_default_open_requirement": null,
@@ -14122,7 +14256,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "White EMMI Arena",
-                        "node_name": "Door from Central Unit Access"
+                        "node_name": "Door to Central Unit Access (Power)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -18396,7 +18530,7 @@
                 "asset_id": "collision_camera_066"
             },
             "nodes": {
-                "Door to Thermal Device": {
+                "Door to Thermal Device (Lower)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -18433,7 +18567,7 @@
                                 "items": []
                             }
                         },
-                        "Door from Thermal Device": {
+                        "Door to Thermal Device (Upper)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -18472,7 +18606,7 @@
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Thermal Device": {
+                        "Door to Thermal Device (Lower)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -18481,7 +18615,7 @@
                         }
                     }
                 },
-                "Door from Thermal Device": {
+                "Door to Thermal Device (Upper)": {
                     "node_type": "dock",
                     "heal": false,
                     "coordinates": {
@@ -18507,11 +18641,11 @@
                         "area_name": "Thermal Device",
                         "node_name": "Door to Path to Thermal Device (Upper)"
                     },
-                    "default_dock_weakness": "Access Closed",
+                    "default_dock_weakness": "Access Locked",
                     "override_default_open_requirement": null,
                     "override_default_lock_requirement": null,
                     "connections": {
-                        "Door to Thermal Device": {
+                        "Door to Thermal Device (Lower)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -18534,7 +18668,7 @@
                     ],
                     "extra": {},
                     "connections": {
-                        "Door to Thermal Device": {
+                        "Door to Thermal Device (Lower)": {
                             "type": "and",
                             "data": {
                                 "comment": null,
@@ -18600,7 +18734,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "Path to Thermal Device",
-                        "node_name": "Door to Thermal Device"
+                        "node_name": "Door to Thermal Device (Lower)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,
@@ -18678,7 +18812,7 @@
                     "default_connection": {
                         "world_name": "Artaria",
                         "area_name": "Path to Thermal Device",
-                        "node_name": "Door from Thermal Device"
+                        "node_name": "Door to Thermal Device (Upper)"
                     },
                     "default_dock_weakness": "Power Beam Door",
                     "override_default_open_requirement": null,

@@ -6,7 +6,7 @@ from randovania.game_description import migration_data, default_database
 from randovania.games.game import RandovaniaGame
 from randovania.lib import migration_lib
 
-CURRENT_VERSION = 27
+CURRENT_VERSION = 30
 
 
 def _migrate_v1(preset: dict) -> dict:
@@ -593,6 +593,27 @@ def _migrate_v26(preset: dict) -> dict:
     return preset
 
 
+def _migrate_v27(preset: dict) -> dict:
+    if preset["game"] == "prime1" and "phazon_suit" not in preset["configuration"]["hints"].keys():
+        preset["configuration"]["hints"]["phazon_suit"] = "hide-area"
+    return preset
+
+
+def _migrate_v28(preset: dict) -> dict:
+    if preset["game"] == "dread":
+        for config in ["hanubia_shortcut_no_grapple", "hanubia_easier_path_to_itorash", "extra_pickups_for_bosses"]:
+            preset["configuration"][config] = True
+
+    return preset
+
+
+def _migrate_v29(preset: dict) -> dict:
+    if preset["game"] == "dread":
+        preset["configuration"]["x_starts_released"] = False
+
+    return preset
+
+
 _MIGRATIONS = {
     1: _migrate_v1,  # v1.1.1-247-gaf9e4a69
     2: _migrate_v2,  # v1.2.2-71-g0fbabe91
@@ -620,6 +641,9 @@ _MIGRATIONS = {
     24: _migrate_v24,
     25: _migrate_v25,
     26: _migrate_v26,
+    27: _migrate_v27,
+    28: _migrate_v28,
+    29: _migrate_v29,
 }
 
 
